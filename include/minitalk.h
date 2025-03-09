@@ -6,7 +6,7 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:37:04 by emurillo          #+#    #+#             */
-/*   Updated: 2025/03/09 19:14:27 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/09 20:39:43 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # include <stdbool.h>
 # include <limits.h>
 # include "../lib/libft/libft.h"
+
 
 #endif

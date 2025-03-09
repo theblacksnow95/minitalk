@@ -8,7 +8,7 @@ NAME = minitalk
 # ===== COMPILES =============================================== #
 
 CC = 			gcc
-C_FLAGS = 		-Wall -Wextra -Werror
+C_FLAGS = 		-Wall -Wextra -Werror -D_XOPEN_SOURCE=700
 RM = 			rm -f
 MKDIR = 		-mkdir -p
 

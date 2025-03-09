@@ -6,7 +6,7 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:05:47 by emurillo          #+#    #+#             */
-/*   Updated: 2025/03/09 20:00:50 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/09 20:27:17 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ void	send_bits(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(50);
 		bit++;
 	}
 }
-
 
 int	main(int ac, char **av)
 {

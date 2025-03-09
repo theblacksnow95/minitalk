@@ -6,12 +6,12 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:36:36 by emurillo          #+#    #+#             */
-/*   Updated: 2025/03/09 20:00:03 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/09 21:17:55 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
-
+#include <signal.h>
 
 void	handler(int signum, siginfo_t *info, void *extra_info)
 {
@@ -37,9 +37,9 @@ int	main(void)
 	struct sigaction	sa;
 
 	ft_printf("Server PID: %d\n", getpid());
-
 	sa.sa_sigaction = handler;
 	sa.sa_flags = SA_SIGINFO;
+	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
