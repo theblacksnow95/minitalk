@@ -6,12 +6,12 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:37:04 by emurillo          #+#    #+#             */
-/*   Updated: 2025/03/10 14:51:31 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:43:14 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
-#define MINITALK_H
+# define MINITALK_H
 
 # include <signal.h>
 # include <unistd.h>
@@ -23,8 +23,12 @@
 
 typedef struct signal_data
 {
-	int	i;
-	int	bit;
-}				data_t;
+	char	c;
+	int		bit;
+	pid_t	pid_client;
+}				t_data;
+
+void	ft_signal(int sig, void *handler, bool use_siginfo);
+void	ft_kill(pid_t pid, int signum);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:59:24 by yourlogin         #+#    #+#             */
-/*   Updated: 2024/12/17 10:19:17 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:31:47 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,5 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int			ft_printf(const char *format, ...);
 
 char		*get_next_line(int fd);
-
 
 #endif
