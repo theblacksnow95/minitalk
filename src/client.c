@@ -6,7 +6,7 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:05:47 by emurillo          #+#    #+#             */
-/*   Updated: 2025/03/09 20:27:17 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/10 15:32:57 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 static void	confirm(int signum)
 {
 	if (signum == SIGUSR1)
-		ft_printf("\033[0;32mSent!\033[0;32m\n");
-	else
-		ft_printf("\033[0;32mSent!\033[0;32m\n");
+		ft_printf("\033[0;32mMessage sent and received correctly!\033[0;32m\n");
 }
 
 void	send_bits(int pid, char c)
@@ -31,7 +29,7 @@ void	send_bits(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(50);
+		usleep(500);
 		bit++;
 	}
 }
@@ -45,10 +43,10 @@ int	main(int ac, char **av)
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
+		signal(SIGUSR1, confirm);
+		signal(SIGUSR2, confirm);
 		while (av[2][i] != '\0')
 		{
-			signal(SIGUSR1, confirm);
-			signal(SIGUSR2, confirm);
 			send_bits(pid, av[2][i]);
 			i++;
 		}
