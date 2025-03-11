@@ -6,7 +6,7 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:37:04 by emurillo          #+#    #+#             */
-/*   Updated: 2025/03/11 10:55:41 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:25:43 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ void	ft_signal(int sig, void *handler, bool use_siginfo);
 void	ft_kill(pid_t pid, int signum);
 
 #endif
-
