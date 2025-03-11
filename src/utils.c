@@ -6,11 +6,12 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 17:59:45 by emurillo          #+#    #+#             */
-/*   Updated: 2025/03/10 18:48:13 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/11 10:56:38 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
+
 
 void	ft_signal(int sig, void *handler, bool use_siginfo)
 {

@@ -6,7 +6,7 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:05:47 by emurillo          #+#    #+#             */
-/*   Updated: 2025/03/10 18:40:42 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:24:35 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,33 @@ static void	update_check(int signum)
 	g_check = 1;
 }
 
-void	send_bits(int pid, char c)
+int	send_bits(int pid, char c)
 {
 	int	bit;
+	int	timeout;
 
 	bit = 0;
 	while (bit < CHAR_BIT)
 	{
+		g_check = 0;
 		if ((c & (0x01 << bit)) != 0)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
+		timeout = 5000;
+		while (!g_check && timeout > 0)
+		{
+			usleep(200);
+			timeout--;
+		}
+		if (timeout == 0)
+		{
+			ft_printf("Error: NO RESPONSE FROM SERVER.\n");
+			return (EXIT_FAILURE);
+		}
 		bit++;
-		while (0 == g_check)
-			usleep(500);
-		g_check = 0;
 	}
+	return (EXIT_SUCCESS);
 }
 
 int	main(int ac, char **av)
@@ -52,12 +63,15 @@ int	main(int ac, char **av)
 	}
 	pid = ft_atoi(av[1]);
 	message = av[2];
-	ft_signal(SIGUSR1, update_check, false);
-	ft_signal(SIGUSR2, update_check, false);
+	signal(SIGUSR1, update_check);
+	signal(SIGUSR2, update_check);
 	while (message[i] != '\0')
 	{
-		send_bits(pid, message[i]);
-		i++;
+		if (send_bits(pid, message[i++]) == EXIT_FAILURE)
+			return (EXIT_FAILURE);
 	}
+	if (send_bits(pid, '\n') == EXIT_FAILURE \
+	|| send_bits(pid, '\n' == EXIT_FAILURE || send_bits(pid, '\0') ))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

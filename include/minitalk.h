@@ -6,7 +6,7 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:37:04 by emurillo          #+#    #+#             */
-/*   Updated: 2025/03/10 18:43:14 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/11 10:55:41 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,19 @@
 # include <stdbool.h>
 # include <limits.h>
 # include "../lib/libft/libft.h"
+# define MAX_LENGTH 1024
 
 typedef struct signal_data
 {
 	char	c;
 	int		bit;
 	pid_t	pid_client;
+	char	message[MAX_LENGTH];
+	int		idx;
 }				t_data;
 
 void	ft_signal(int sig, void *handler, bool use_siginfo);
 void	ft_kill(pid_t pid, int signum);
 
 #endif
+
