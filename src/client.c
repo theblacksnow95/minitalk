@@ -6,7 +6,7 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:05:47 by emurillo          #+#    #+#             */
-/*   Updated: 2025/03/11 15:25:30 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:12:31 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(int ac, char **av)
 			return (EXIT_FAILURE);
 	}
 	if (send_bits(pid, '\n') == EXIT_FAILURE \
-	|| send_bits(pid, '\n' == EXIT_FAILURE || send_bits(pid, '\0') ))
+	|| send_bits(pid, '\0') == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

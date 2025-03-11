@@ -12,7 +12,6 @@ MKDIR = 		mkdir -p
 # ===== DIRECTORIES ============================================ #
 
 SRC = src/
-SRC_UTILS =		$(SRC)utils.c
 SRC_CLIENT = 	$(SRC)client.c
 SRC_SERVER =	$(SRC)server.c
 LIBFT_DIR =		lib/libft/
@@ -27,7 +26,6 @@ LIBFT_LIB = $(LIBFT_DIR)libft.a
 
 OBJ_CLIENT = $(OBJ_DIR)client.o
 OBJ_SERVER = $(OBJ_DIR)server.o
-OBJ_UTILS = $(OBJ_DIR)utils.o
 
 # ===== TARGETS ================================================ #
 
@@ -47,17 +45,14 @@ $(OBJ_DIR)server.o: $(SRC_SERVER)
 	$(MKDIR) $(OBJ_DIR)
 	@$(CC) $(C_FLAGS) -c $< -o $@
 
-$(OBJ_DIR)utils.o: $(SRC_UTILS)
-	@$(MKDIR) $(OBJ_DIR)
-	@$(CC) $(C_FLAGS) -c $< -o $@
 
-$(TARGET_CLIENT): $(OBJ_CLIENT) $(OBJ_UTILS) $(LIBFT_LIB)
+$(TARGET_CLIENT): $(OBJ_CLIENT) $(LIBFT_LIB)
 	$(MKDIR) $(BIN_DIR)
-	@$(CC) $(C_FLAGS) $(OBJ_CLIENT) $(OBJ_UTILS) -L$(LIBFT_DIR) -lft -o $(TARGET_CLIENT)
+	@$(CC) $(C_FLAGS) $(OBJ_CLIENT) -L$(LIBFT_DIR) -lft -o $(TARGET_CLIENT)
 
-$(TARGET_SERVER): $(OBJ_SERVER) $(OBJ_UTILS) $(LIBFT_LIB)
+$(TARGET_SERVER): $(OBJ_SERVER) $(LIBFT_LIB)
 	$(MKDIR) $(BIN_DIR)
-	@$(CC) $(C_FLAGS) $(OBJ_SERVER) $(OBJ_UTILS) -L$(LIBFT_DIR) -lft -o $(TARGET_SERVER)
+	@$(CC) $(C_FLAGS) $(OBJ_SERVER) -L$(LIBFT_DIR) -lft -o $(TARGET_SERVER)
 
 $(LIBFT_LIB):
 	@$(MAKE) bonus -C $(LIBFT_DIR)

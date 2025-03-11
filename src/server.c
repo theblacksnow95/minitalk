@@ -6,7 +6,7 @@
 /*   By: emurillo <emurillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:36:36 by emurillo          #+#    #+#             */
-/*   Updated: 2025/03/11 15:26:41 by emurillo         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:24:10 by emurillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ volatile t_data	g_data;
 static void	init_data(void)
 {
 	int	i;
+
 	g_data.c = 0;
 	g_data.bit = 0;
 	g_data.pid_client = 0;
@@ -29,7 +30,6 @@ static void	init_data(void)
 	}
 	g_data.idx = 0;
 }
-
 
 void	handler(int signum, siginfo_t *info, void *extra_info)
 {
@@ -44,15 +44,16 @@ void	handler(int signum, siginfo_t *info, void *extra_info)
 	if (g_data.bit == CHAR_BIT)
 	{
 		g_data.message[g_data.idx] = g_data.c;
+		g_data.bit = 0;
+		g_data.c = 0;
 		if (g_data.message[g_data.idx] == '\0' || g_data.idx == MAX_LENGTH - 1)
 		{
-			ft_printf("%s", g_data.message);
+			ft_putstr_fd((char *)g_data.message, STDOUT_FILENO);
+			ft_putstr_fd("\n", STDOUT_FILENO);
 			g_data.idx = 0;
 		}
 		else
 			g_data.idx++;
-		g_data.bit = 0;
-		g_data.c = 0;
 	}
 	kill(g_data.pid_client, SIGUSR1);
 	usleep(200);
